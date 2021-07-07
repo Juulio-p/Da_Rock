@@ -6,7 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock,Paper,Sissors</title>
 </head>
-<body>
-    
-</body>
+<script>
+    function computerPlay(computerSelection){
+        const choices= ["rock", "paper", "scissors"];
+        let index = Math.floor(Math.random()*choices.length) 
+        let computerSelection1= choices[index];
+        return computerSelection1;
+    }
+
+let playerSelection = prompt("Rock,Paper,Or Scissors? ", "");
+const computerSelection= computerPlay();
+console.log(computerSelection);
+
+
+function playRound( playerSelection, computerSelection){
+
+
+
+if(playerSelection > computerSelection){
+statment += "You Win! Paper beats Rock";
+}else if(playerSelection <computerSelection){
+    statment += "You lose! Paper beats Rock";
+}
+function game(playRound){
+for(let i= 0; i<=5; i++){
+    playRound();
+    i++;
+    console.log(playRound());
+}
+}
+}
+</script>
 </html>
