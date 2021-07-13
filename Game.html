@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,34 +8,49 @@
     <title>Rock,Paper,Sissors</title>
 </head>
 <script>
-    function computerPlay(computerSelection){
-        const choices= ["rock", "paper", "scissors"];
-        let index = Math.floor(Math.random()*choices.length) 
-        let computerSelection1= choices[index];
-        return computerSelection1;
+
+const computerSelection = computerPlay();
+
+    function computerPlay(ComputerChoice) {
+        const choices = ["rock", "paper", "scissors"];
+        let index = Math.floor(Math.random() * choices.length)
+        let computerSelection = choices[index];
+        return computerSelection;
+    }
+    function win(playerSelection, computerSelection){
+        let compute= playerSelection.length - computerSelection.length ; 
+        let winner=false;
+        if(compute>0 ||compute==-4 ){
+            winner= true;
+        }else if(compute<0 || compute==4) {
+            winnner= false;
+        }
+        return winner; 
+    }
+    function playRound(playerSelection, computerSelection) {
+        let statment = "";
+        if (playerSelection == computerSelection) {
+            statment += "Tie, both picked " + computerSelection;
+        } else if(win(playerSelection,computerSelection)){
+            statment += "you win " + playerSelection+ " beats " +computerSelection;
+        }else if(!(win(playerSelection,computerSelection))){
+            statment += "you lose "+ computerSelection +" beats " + playerSelection;
+        }
+        return statment;
     }
 
-let playerSelection = prompt("Rock,Paper,Or Scissors? ", "");
-const computerSelection= computerPlay();
-console.log(computerSelection);
+    
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Rock,Paper,Or Scissors? ");
+        playerSelection.toLowerCase();
+        console.log(playRound(playerSelection,computerSelection));
+         i+1;
+        }
+
+   
+    
 
 
-function playRound( playerSelection, computerSelection){
-
-
-
-if(playerSelection > computerSelection){
-statment += "You Win! Paper beats Rock";
-}else if(playerSelection <computerSelection){
-    statment += "You lose! Paper beats Rock";
-}
-function game(playRound){
-for(let i= 0; i<=5; i++){
-    playRound();
-    i++;
-    console.log(playRound());
-}
-}
-}
 </script>
+
 </html>
