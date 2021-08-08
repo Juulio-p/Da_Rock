@@ -1,32 +1,29 @@
-
 const buttons = document.querySelectorAll('button')
 let computerScore =0;
 let playerScore= 0;
-
-
-
-
 
 buttons.forEach((button) => {
         
     button.addEventListener('click', () =>{
 
+    let computerSelection = computerPlay();
     playerSelection = button.id;
-
     playRound(playerSelection,computerSelection);
-    if(playerScore +computerScore >=5){
+    
+    if((computerScore || playerScore) ==5) {
         button.disabled =true;
+
         if(playerScore >computerScore){
         document.getElementById('winner').innerHTML = "You Win! refresh page to play again";
-        }else if(playerScore< computerScore){
-            document.getElementById('winner').innerHTML = "You Loose , better luck next time! refresh page to play again";
+        
+         }else if(playerScore< computerScore){
+        document.getElementById('winner').innerHTML = "You Loose , better luck next time! refresh page to play again";
         }
-
 }
+
     });
 
 });
-
 
 const computerSelection = computerPlay();
 // computer selection passed on to another function, computer play.
@@ -65,22 +62,18 @@ const computerSelection = computerPlay();
         if (tie) {
             statment += "Tie, both picked " + computerSelection;
             // if both player and computer had the same results just print them and say they the same
-        } else if(win(playerSelection,computerSelection)){
+        } else if(win(playerSelection ,computerSelection)){
             // pass through win function 
             statment += "you win " + playerSelection+ " beats " +computerSelection;
             // if win comes back true reeturn this statement
+            playerScore +=1;
+
         }else if(!(win(playerSelection,computerSelection))){
             // if the win function retruns false print this 
             statment += "you lose "+ computerSelection +" beats " + playerSelection;
-        }
-
-        if(win(playerSelection, computerSelection)){
-            playerScore +=1;
-        }else if (!(win(playerSelection, computerSelection) || (tie))){
             computerScore +=1;
-        } else if(!(win(playerSelection, computerSelection)) && tie ){
-
         }
+
 
        let scoreBoard = '<br>' +'PlayerScore: ' + playerScore + ' <br>  Computer Score: ' + computerScore;
 

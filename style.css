@@ -1,0 +1,17 @@
+button{
+font-size: 35px;
+border: solid black 5px;
+background-color: silver;
+}
+#buttonContainer{
+    text-align: center;
+    padding-left: 100px;
+}
+body{
+    background-color: teal;
+} 
+
+#results{
+    text-align: center;
+    font-size: x-large;
+}

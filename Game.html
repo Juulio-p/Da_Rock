@@ -1,69 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<script src="JGame.js" defer></script>
+<link rel="StyleSheet" href="style.css"/>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Rock,Paper,Sissors</title> <!--Defult html inserts-->
 </head>
-<script>
 
-const computerSelection = computerPlay();
-// computer selection passed on to another function, computer play.
+<div id = "buttonContainer">
+    <button id ="rock"> Rock </button>
+    <button id ="paper"> Paper </button>
+    <button id ="scissors"> Scissors </button>
+    </div>
 
-
-    function computerPlay(ComputerChoice) {
-        const choices = ["rock", "paper", "scissors"];
-        // array of three choices
-        let index = Math.floor(Math.random() * choices.length)
-        // picks ranom number, within th array "choices" length
-        let computerSelection = choices[index];
-        /* declared coomputerSelection to be any of
-         the random indexes from the array"choices"*/
-        return computerSelection;
-    }
-
-    function win(playerSelection, computerSelection){
-        let compute= playerSelection.length - computerSelection.length ;
-        /* compares lengths of the Strings. one is gotten from the user and another
-         from the function computer play */
-        let winner=false;
-        // made boolean expression start with false;
-        if(compute>0 ||compute==-4 ){
-            // conditions to be met in order for the win to be true
-            winner= true;
-        }else if(compute<0 || compute==4) {
-            winnner= false;
-            // i guess keep the variable the same could inproved but works perfectly
-        }
-        return winner; 
-    }
-    function playRound(playerSelection, computerSelection) {
-        let statment = "";
-        if (playerSelection == computerSelection) {
-            statment += "Tie, both picked " + computerSelection;
-            // if both player and computer had the same results just print them and say they the same
-        } else if(win(playerSelection,computerSelection)){
-            // pass through win function 
-            statment += "you win " + playerSelection+ " beats " +computerSelection;
-            // if win comes back true reeturn this statement
-        }else if(!(win(playerSelection,computerSelection))){
-            // if the win function retruns false print this 
-            statment += "you lose "+ computerSelection +" beats " + playerSelection;
-        }
-        return statment;
-    }
-    
-    for (let i = 0; i < 5; i++) {// looping through game 5 times
-        let playerSelection = prompt("Rock,Paper,Or Scissors? ");
-        playerSelection.toLowerCase(); 
-        // making the comparison Lower case so function can read regardless of punctuation
-        console.log(playRound(playerSelection,computerSelection));
-        // calling the game 
-         i+1;
-        }
-
-</script>
-
+    <div id='results'>
+        <p id='Results'>  </p>  
+        <br> 
+        <h1 id = 'winner'> </h1> 
+      
+    </div>
+ 
 </html>
