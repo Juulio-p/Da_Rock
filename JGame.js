@@ -10,15 +10,12 @@ buttons.forEach((button) => {
     playerSelection = button.id;
     playRound(playerSelection,computerSelection);
     
-    if((computerScore || playerScore) ==5) {
+    if(computerScore ==5) {
         button.disabled =true;
-
-        if(playerScore >computerScore){
-        document.getElementById('winner').innerHTML = "You Win! refresh page to play again";
-        
-         }else if(playerScore< computerScore){
         document.getElementById('winner').innerHTML = "You Loose , better luck next time! refresh page to play again";
-        }
+    }else if(playerScore ==5){
+        button.disabled =true;   
+        document.getElementById('winner').innerHTML = "You Win! refresh page to play again";
 }
 
     });
@@ -42,15 +39,17 @@ const computerSelection = computerPlay();
         let compute= playerSelection.length - computerSelection.length ;
         /* compares lengths of the Strings. one is gotten from the user and another
          from the function computer play */
+         
         let winner=false;
         // made boolean expression start with false;
-        if(compute>0 ||compute==-4 ){
+        if((compute>0 || compute==-4)&& !(compute==4) ){
             // conditions to be met in order for the win to be true
             winner= true;
         }else if(compute<0 || compute==4) {
             winnner= false;
             // i guess keep the variable the same could inproved but works perfectly
         }
+    
         return winner; 
     }
 
@@ -58,8 +57,8 @@ const computerSelection = computerPlay();
 
     function playRound(playerSelection, computerSelection) {
         let statment = "";
-        let tie = playerSelection == computerSelection;
-        if (tie) {
+        
+        if (playerSelection == computerSelection) {
             statment += "Tie, both picked " + computerSelection;
             // if both player and computer had the same results just print them and say they the same
         } else if(win(playerSelection ,computerSelection)){
@@ -82,21 +81,6 @@ const computerSelection = computerPlay();
         
         return statment;
     }
-
-   
-/*
-function game(playerSelection,computerSelection){
-    for (let i = 0; i < 5; i++) {// looping through game 5 times
-      
-        playerSelection.toLowerCase(); 
-        // making the comparison Lower case so function can read regardless of punctuation
-        playRound(playerSelection,computerSelection);
-        // calling the game 
-
-         i+1;
-    }
-}
-    */
 
 
 
