@@ -2,6 +2,7 @@ const buttons = document.querySelectorAll('button')
 let computerScore =0;
 let playerScore= 0;
 
+// checking email on github
 buttons.forEach((button) => {
         
     button.addEventListener('click', () =>{
